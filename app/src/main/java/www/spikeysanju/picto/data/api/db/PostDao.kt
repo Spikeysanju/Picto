@@ -1,4 +1,4 @@
-package www.spikeysanju.picto.db
+package www.spikeysanju.picto.data.api.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.*

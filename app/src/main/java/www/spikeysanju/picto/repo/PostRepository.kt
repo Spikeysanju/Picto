@@ -1,7 +1,7 @@
 package www.spikeysanju.picto.repo
 
-import www.spikeysanju.picto.api.RetrofitInstance
-import www.spikeysanju.picto.db.PostDatabase
+import www.spikeysanju.picto.data.api.RetrofitInstance
+import www.spikeysanju.picto.data.api.db.PostDatabase
 
 class PostRepository (val db: PostDatabase) {
 

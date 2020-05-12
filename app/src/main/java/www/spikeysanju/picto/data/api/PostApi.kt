@@ -1,4 +1,4 @@
-package www.spikeysanju.picto.api
+package www.spikeysanju.picto.data.api
 
 import retrofit2.Response
 import retrofit2.http.GET

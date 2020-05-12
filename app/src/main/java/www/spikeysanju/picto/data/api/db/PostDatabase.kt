@@ -1,4 +1,4 @@
-package www.spikeysanju.picto.db
+package www.spikeysanju.picto.data.api.db
 
 import android.content.Context
 import androidx.room.Database
@@ -21,9 +21,14 @@ abstract class PostDatabase: RoomDatabase()  {
         private val LOCK = Any()
 
         // Check for DB instance if not null then get or insert or else create new DB Instance
-        operator fun invoke(context: Context) = instance?: synchronized(LOCK){
+        operator fun invoke(context: Context) = instance
+            ?: synchronized(LOCK) {
 
-            instance?: createDatabase(context).also{ instance = it }
+                instance
+                    ?: createDatabase(
+                        context
+                    )
+                        .also { instance = it }
 
         }
 

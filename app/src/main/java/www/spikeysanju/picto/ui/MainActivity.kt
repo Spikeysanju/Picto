@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 import www.spikeysanju.picto.R
-import www.spikeysanju.picto.db.PostDatabase
+import www.spikeysanju.picto.data.api.db.PostDatabase
 import www.spikeysanju.picto.repo.PostRepository
 import www.spikeysanju.picto.ui.adapter.PostAdapter
 import www.spikeysanju.picto.ui.viewmodel.PostViewModel
@@ -31,7 +31,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // init viewModelProvider
-        val newsRepository = PostRepository(PostDatabase(this))
+        val newsRepository = PostRepository(
+            PostDatabase(
+                this
+            )
+        )
         val viewModelProviderFactory = PostViewModelProviderFactory(newsRepository)
         postViewModel =
             ViewModelProvider(this, viewModelProviderFactory).get(PostViewModel::class.java)
