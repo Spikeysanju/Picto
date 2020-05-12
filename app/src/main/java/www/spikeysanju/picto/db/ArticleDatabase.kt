@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
 import www.spikeysanju.picto.model.Post
 
 @Database(
@@ -12,7 +11,6 @@ import www.spikeysanju.picto.model.Post
     version = 1
 )
 
-@TypeConverters(Post::class)
 abstract class PostDatabase: RoomDatabase()  {
 
     abstract fun getPostDao(): PostDao

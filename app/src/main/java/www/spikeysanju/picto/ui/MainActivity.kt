@@ -1,34 +1,70 @@
 package www.spikeysanju.picto.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 import www.spikeysanju.picto.R
 import www.spikeysanju.picto.adapter.PostAdapter
+import www.spikeysanju.picto.db.PostDatabase
+import www.spikeysanju.picto.repo.PostRepository
 import www.spikeysanju.picto.ui.viewmodel.PostViewModel
+import www.spikeysanju.picto.ui.viewmodel.PostViewModelProviderFactory
 import www.spikeysanju.picto.utils.Resource
-import java.util.*
+import www.spikeysanju.picto.utils.hide
+import www.spikeysanju.picto.utils.show
 
 class MainActivity : AppCompatActivity() {
 
 
-    lateinit var viewModel: PostViewModel
+    lateinit var postViewModel: PostViewModel
     lateinit var postAdapter: PostAdapter
+
     val TAG = "Images"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // init viewModelProvider
+        val newsRepository = PostRepository(PostDatabase(this))
+        val viewModelProviderFactory = PostViewModelProviderFactory(newsRepository)
+        postViewModel =
+            ViewModelProvider(this, viewModelProviderFactory).get(PostViewModel::class.java)
+
+
         // init RV
         setUpRecyclerView()
 
+        // init viewModel
+        postViewModel = (this).postViewModel
 
+        // observe for changes
+        postViewModel.postData.observe(this, androidx.lifecycle.Observer { response ->
 
+            when (response) {
 
-        viewModel = (this).viewModel
+                is Resource.Loading -> {
+                    mProgress.show()
+                }
+
+                is Resource.Success -> {
+                    mProgress.hide()
+                    response.data?.let { postResponse ->
+                        postAdapter.differ.submitList(postResponse)
+                    }
+                }
+                is Resource.Error -> {
+                    mProgress.hide()
+                    response.message?.let { message ->
+                        Log.d(TAG, "An Error Occured:$message")
+                    }
+                }
+            }
+
+        })
 
 
     }
@@ -37,7 +73,7 @@ class MainActivity : AppCompatActivity() {
         postAdapter = PostAdapter()
         post_rv.apply {
             adapter = postAdapter
-            layoutManager = LinearLayoutManager(this@MainActivity)
+            layoutManager = GridLayoutManager(this@MainActivity, 2)
         }
     }
 
