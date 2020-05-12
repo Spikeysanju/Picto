@@ -11,11 +11,9 @@ interface PostDao  {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun upsertPost(post: Post):Long
 
-
     // Get All Post from DB
     @Query("SELECT * FROM posts")
     fun getAllPost(): LiveData<List<Post>>
-
 
     // delete post from DB
     @Delete

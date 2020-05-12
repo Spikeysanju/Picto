@@ -93,3 +93,8 @@ dependencies {
     implementation 'io.coil-kt:coil:0.9.5'
 
 }
+
+
+repositories {
+    mavenCentral()
+}

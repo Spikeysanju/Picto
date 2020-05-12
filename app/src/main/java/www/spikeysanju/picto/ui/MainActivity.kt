@@ -9,9 +9,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 import www.spikeysanju.picto.R
-import www.spikeysanju.picto.adapter.PostAdapter
 import www.spikeysanju.picto.db.PostDatabase
 import www.spikeysanju.picto.repo.PostRepository
+import www.spikeysanju.picto.ui.adapter.PostAdapter
 import www.spikeysanju.picto.ui.viewmodel.PostViewModel
 import www.spikeysanju.picto.ui.viewmodel.PostViewModelProviderFactory
 import www.spikeysanju.picto.utils.Resource
@@ -75,8 +75,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setUpNightMode() {
-
-
+        // Save Theme Preference in SharedPreferences
         val appSettingPrefs: SharedPreferences = getSharedPreferences("AppSettingPrefs", 0)
         val sharedPrefsEdit: SharedPreferences.Editor = appSettingPrefs.edit()
         val isNightModeOn: Boolean = appSettingPrefs.getBoolean("NightMode", false)

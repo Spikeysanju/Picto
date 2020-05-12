@@ -7,6 +7,7 @@ import www.spikeysanju.picto.model.PostResponse
 
 interface PostApi {
 
+    // get post using API Endpoint
     @GET("/img_api/")
     suspend fun getAllPost(): Response<PostResponse>
 
