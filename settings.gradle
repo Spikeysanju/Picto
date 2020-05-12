@@ -1,0 +1,2 @@
+rootProject.name='Picto'
+include ':app'
