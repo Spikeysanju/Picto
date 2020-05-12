@@ -1,8 +1,10 @@
 package www.spikeysanju.picto.ui
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
@@ -34,6 +36,9 @@ class MainActivity : AppCompatActivity() {
         postViewModel =
             ViewModelProvider(this, viewModelProviderFactory).get(PostViewModel::class.java)
 
+        // setup Night Mode
+
+        setUpNightMode()
 
         // init RV
         setUpRecyclerView()
@@ -66,6 +71,34 @@ class MainActivity : AppCompatActivity() {
 
         })
 
+
+    }
+
+    private fun setUpNightMode() {
+
+
+        val appSettingPrefs: SharedPreferences = getSharedPreferences("AppSettingPrefs", 0)
+        val sharedPrefsEdit: SharedPreferences.Editor = appSettingPrefs.edit()
+        val isNightModeOn: Boolean = appSettingPrefs.getBoolean("NightMode", false)
+
+        if (isNightModeOn) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+
+        dark_switch_fab.setOnClickListener {
+            if (isNightModeOn) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                sharedPrefsEdit.putBoolean("NightMode", false)
+                sharedPrefsEdit.apply()
+
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                sharedPrefsEdit.putBoolean("NightMode", true)
+                sharedPrefsEdit.apply()
+            }
+        }
 
     }
 
