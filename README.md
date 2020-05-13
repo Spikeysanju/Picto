@@ -4,7 +4,7 @@
 
 # Picto
 **Picto** is a sample gallery Android application 📱 built to demonstrate use of *Modern Android development* tools & use of
-*[Picto](https://coil-kt.github.io/coil/) - An Custom image loading library for Android developed by [Spikeysanju](https://github.com/Spikeysanju) 🥳.*
+*[Picto](https://github.com/Spikeysanju/Picto/blob/master/app/src/main/java/www/spikeysanju/picto/pictoImageLoader/Picto.kt) - An Custom image loading library for Android developed by [Spikeysanju](https://github.com/Spikeysanju) 🥳.*
 
 
 *API for Picto App is hosted here [here](http://3ue.xyz/img_api/)*.
@@ -20,7 +20,7 @@
 - [Koin](https://insert-koin.io/) - Dependency Injection Framework
 - [Retrofit 2](https://square.github.io/retrofit/) - A type-safe HTTP client for Android and Java.
 - [GSON Converter](https://github.com/square/retrofit/tree/master/retrofit-converters/gson) - A Converter which uses Gson for serialization to and from JSON.
-- [Picto](https://coil-kt.github.io/coil/) - An Custom image loading library for Android developed by [Spikeysanju](https://github.com/Spikeysanju).
+- [Picto](https://github.com/Spikeysanju/Picto/blob/master/app/src/main/java/www/spikeysanju/picto/pictoImageLoader/Picto.kt) - An Custom image loading library for Android developed by [Spikeysanju](https://github.com/Spikeysanju).
 - [Material Components for Android](https://github.com/material-components/material-components-android) - Modular and customizable Material Design UI components for Android.
 
 
