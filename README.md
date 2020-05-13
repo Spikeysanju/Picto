@@ -10,6 +10,12 @@
 *API for Picto App is hosted here [here](http://3ue.xyz/img_api/)*.
 
 
+***You can Install and test latest Picto app from below 👇***
+
+[![Picto App](https://img.shields.io/badge/Picto🌈-APK-black.svg?style=for-the-badge&logo=android)](https://github.com/Spikeysanju/Picto/blob/master/apk/Picto.apk)
+
+
+
 ## Built With 🛠
 - [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android development.
 - [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - For asynchronous and more..
