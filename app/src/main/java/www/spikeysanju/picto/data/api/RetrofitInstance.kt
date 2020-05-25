@@ -27,7 +27,6 @@ companion object {
     }
 
     val api by lazy {
-
         retrofit.create(PostApi::class.java)
     }
 

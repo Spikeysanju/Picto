@@ -2,7 +2,7 @@ package www.spikeysanju.picto.ui
 
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
@@ -20,11 +20,8 @@ import www.spikeysanju.picto.utils.show
 
 class MainActivity : AppCompatActivity() {
 
-
     lateinit var postViewModel: PostViewModel
     lateinit var postAdapter: PostAdapter
-
-    val TAG = "Images"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,12 +33,11 @@ class MainActivity : AppCompatActivity() {
                 this
             )
         )
-        val viewModelProviderFactory = PostViewModelProviderFactory(newsRepository)
+        val viewModelProviderFactory = PostViewModelProviderFactory(application, newsRepository)
         postViewModel =
             ViewModelProvider(this, viewModelProviderFactory).get(PostViewModel::class.java)
 
         // setup Night Mode
-
         setUpNightMode()
 
         // init RV
@@ -68,7 +64,8 @@ class MainActivity : AppCompatActivity() {
                 is Resource.Error -> {
                     mProgress.hide()
                     response.message?.let { message ->
-                        Log.d(TAG, "An Error Occured:$message")
+                        Toast.makeText(this, "An error occurred: $message", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
             }

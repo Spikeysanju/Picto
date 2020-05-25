@@ -7,7 +7,6 @@ import www.spikeysanju.picto.ui.viewmodel.PostViewModel
 
 val viewModelModule = module {
     viewModel {
-        PostViewModel(get())
+        PostViewModel(get(), get())
     }
-
 }
